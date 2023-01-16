@@ -1,5 +1,6 @@
 package com.in28minutes.rest.webservices.restfulwebservices.exceptions;
 
+import com.in28minutes.rest.webservices.restfulwebservices.model.ErrorDetails;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

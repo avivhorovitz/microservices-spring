@@ -1,9 +1,8 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import com.in28minutes.rest.webservices.restfulwebservices.exceptions.UserNotFoundException;
-import org.springframework.http.HttpStatus;
+import com.in28minutes.rest.webservices.restfulwebservices.model.User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

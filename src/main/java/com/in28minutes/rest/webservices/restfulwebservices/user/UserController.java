@@ -1,19 +1,19 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import com.in28minutes.rest.webservices.restfulwebservices.model.User;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
-public class UserResource {
+public class UserController {
 
     private final UserDaoService userDaoService;
 
-    public UserResource(UserDaoService userDaoService) {
+    public UserController(UserDaoService userDaoService) {
         this.userDaoService = userDaoService;
     }
     @GetMapping(path = "/users")
