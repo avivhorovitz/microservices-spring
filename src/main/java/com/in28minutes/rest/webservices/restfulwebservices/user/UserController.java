@@ -2,6 +2,8 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import com.in28minutes.rest.webservices.restfulwebservices.model.User;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,8 +23,12 @@ public class UserController {
         return userDaoService.findAll();
     }
     @GetMapping(path = "/users/{id}")
-    public User findUserById(@PathVariable int id){
-        return userDaoService.findOne(id);
+    public EntityModel<User> findUserById(@PathVariable int id){
+
+        var entityModel=EntityModel.of(userDaoService.findOne(id));
+        var link=WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+        entityModel.add(link.withRel("all-users"));
+        return entityModel;
     }
 
     @PostMapping(path = "/users")
