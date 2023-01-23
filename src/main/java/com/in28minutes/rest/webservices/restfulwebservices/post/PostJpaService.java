@@ -28,4 +28,8 @@ public class PostJpaService {
     public List<Post> retrievePostForUser(int id){
         return userJpaService.findOne(id).getPosts();
     }
+    public List<Post> retrieveAllPosts(){
+        return postRepository.findAll();
+    }
+
 }

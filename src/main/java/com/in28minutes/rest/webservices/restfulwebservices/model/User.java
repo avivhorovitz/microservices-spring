@@ -2,13 +2,14 @@ package com.in28minutes.rest.webservices.restfulwebservices.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
+import org.aspectj.lang.annotation.RequiredTypes;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,10 +23,11 @@ public class User {
     @Size(min=2,message = "Name should have at least 2 characters")
     private String name;
     @Past(message = "Birth date should be in the past")
+    @NotNull(message = "birthDate should not be null")
     private LocalDate birthDate;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade =  { CascadeType.REMOVE })
+    @JsonIgnore()
     private List<Post> posts;
 
     public User(){
